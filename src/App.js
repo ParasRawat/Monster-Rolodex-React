@@ -12,7 +12,10 @@ class App extends Component{
      ]
     }
   }
+
+  // the state has its varios properties, we can alter those properties based on the result from api's
   
+  // i was hoping to get a good playing ground 
 
 componentDidMount(){
   fetch('https://jsonplaceholder.typicode.com/users')
@@ -20,18 +23,12 @@ componentDidMount(){
    .then(users => this.setState({monsters: users}));
 }
 
+//pass the newly updated states as a property to our component 
 
   render(){
     return (
       <div className="App">
-        <CardList name="Paras"> 
-          {
-        this.state.monsters.map(monster=>
-        <h2 key={monster.id}> This monster is {monster.name} {monster.username} </h2>)
-        }
-        </CardList>
-        
-        
+        <CardList monsters={this.state.monsters}/> 
       </div>
     );
   }
