@@ -6,6 +6,7 @@ import {Card} from "../card/card.component";
 //building components that only care about one thing like the card list
 export const CardList = (props) => {
 console.log(props);
+//here i have to specifically mention the return statement
 return(
 
 <div className='card-list'>

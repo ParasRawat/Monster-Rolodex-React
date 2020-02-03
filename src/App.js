@@ -6,28 +6,30 @@ import { CardList } from './components/card-list/card-list.component'
 class App extends Component{
   constructor(){
     super();
+    //state itself is a javascript object with many properties 
     this.state={
-     monsters: [
-
-     ]
-    }
+     monsters: [],
+     searchField: ''
+    };
   }
 
-  // the state has its varios properties, we can alter those properties based on the result from api's
-  
-  // i was hoping to get a good playing ground 
 
 componentDidMount(){
   fetch('https://jsonplaceholder.typicode.com/users')
   .then(response=> response.json())
    .then(users => this.setState({monsters: users}));
+   
 }
 
-//pass the newly updated states as a property to our component 
+//component recieves the state as a prop.. 
+
 
   render(){
     return (
+      //asynchrnous is an event that takes an unknown amount of time and thus the system does not wait for it to finish and calls the next functions
       <div className="App">
+        <input type='search'  placeholder='search monsters' onChange={e => this.setState({searchField: e.target.value})
+      }/>
         <CardList monsters={this.state.monsters}/> 
       </div>
     );
