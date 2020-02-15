@@ -25,12 +25,19 @@ componentDidMount(){
 
 
   render(){
+    const { monsters, searchField} = this.state; // javascript syntax for the destructuring of a object
+    //above line of code is equivalent to const monsters= this.state.monsters && const searchfield = this.state.searchfield
+    const filteredmonsters = monsters.filter(monster => 
+      monster.name.toLowerCase().includes(searchField.toLowerCase())
+      )
+
+
     return (
       //asynchrnous is an event that takes an unknown amount of time and thus the system does not wait for it to finish and calls the next functions
       <div className="App">
         <input type='search'  placeholder='search monsters' onChange={e => this.setState({searchField: e.target.value})
       }/>
-        <CardList monsters={this.state.monsters}/> 
+        <CardList monsters={filteredmonsters}/> 
       </div>
     );
   }
