@@ -12,6 +12,7 @@ return(
     <input type='search' 
     className ='search'
     placeholder={placeholder}// keeping it dynamic 
+    // on change performs the handleChange functionality
     onChange={handleChange} />
 )
 }

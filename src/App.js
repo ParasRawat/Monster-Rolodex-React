@@ -12,6 +12,8 @@ class App extends Component {
       monsters: [],
       searchField: ''
     };
+
+    
   }
 
 
@@ -24,6 +26,9 @@ class App extends Component {
 
   //component recieves the state as a prop.. 
 
+  handleChange=(e)=>{
+      this.setState({searchField:e.target.value})
+  }
 
   render() {
     const { monsters, searchField } = this.state; // javascript syntax for the destructuring of a object
@@ -38,9 +43,10 @@ class App extends Component {
       //asynchrnous is an event that takes an unknown amount of time and thus the system does not wait for it to finish and calls the next functions
       <div className="App">
 
+        <h1>Monsters Rolodex</h1>
         <SearchBox
         placeholder='search monsters'
-        handleChange= {e => this.setState({ searchField: e.target.value })}
+        handleChange= {this.handleChange}
         ></SearchBox>
         <CardList monsters={filteredmonsters} />
       </div>
